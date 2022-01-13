@@ -6,6 +6,7 @@ Panels:
       Expanded:
         - /odometry1/odomPath1
         - /mapping1
+        - /mapping1/allMapCloud1
         - /pgoOdom1/Shape1
       Splitter Ratio: 0.49117645621299744
     Tree Height: 746
@@ -27,7 +28,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: pgoMap
+    SyncSource: allMapCloud
   - Class: rviz/Views
     Expanded:
       - /Current View1
@@ -63,7 +64,8 @@ Visualization Manager:
       Plane Cell Count: 160
       Reference Frame: <Fixed Frame>
       Value: false
-    - Class: rviz/Axes
+    - Alpha: 1
+      Class: rviz/Axes
       Enabled: true
       Length: 1
       Name: Axes
@@ -89,6 +91,7 @@ Visualization Manager:
             Z: 0
           Pose Color: 255; 85; 255
           Pose Style: None
+          Queue Size: 10
           Radius: 0.029999999329447746
           Shaft Diameter: 0.10000000149011612
           Shaft Length: 0.10000000149011612
@@ -112,6 +115,7 @@ Visualization Manager:
             Z: 0
           Pose Color: 255; 85; 255
           Pose Style: None
+          Queue Size: 10
           Radius: 0.029999999329447746
           Shaft Diameter: 0.10000000149011612
           Shaft Length: 0.10000000149011612
@@ -139,6 +143,7 @@ Visualization Manager:
             Z: 0
           Pose Color: 255; 85; 255
           Pose Style: None
+          Queue Size: 10
           Radius: 0.029999999329447746
           Shaft Diameter: 0.10000000149011612
           Shaft Length: 0.10000000149011612
@@ -160,9 +165,7 @@ Visualization Manager:
           Enabled: false
           Invert Rainbow: false
           Max Color: 255; 255; 255
-          Max Intensity: 63.10047912597656
           Min Color: 0; 0; 0
-          Min Intensity: -0.0067862942814826965
           Name: PointCloud2
           Position Transformer: XYZ
           Queue Size: 10
@@ -196,30 +199,29 @@ Visualization Manager:
             Z: 0
           Pose Color: 255; 85; 255
           Pose Style: None
+          Queue Size: 10
           Radius: 0.029999999329447746
           Shaft Diameter: 0.10000000149011612
           Shaft Length: 0.10000000149011612
-          Topic: /aft_mapped_path
+          Topic: aft_mapped_path
           Unreliable: false
           Value: true
         - Alpha: 1
           Autocompute Intensity Bounds: true
           Autocompute Value Bounds:
-            Max Value: 10
-            Min Value: -10
+            Max Value: 1.737986445426941
+            Min Value: -2.6203548908233643
             Value: true
           Axis: Z
           Channel Name: intensity
           Class: rviz/PointCloud2
           Color: 255; 255; 255
-          Color Transformer: Intensity
+          Color Transformer: FlatColor
           Decay Time: 0
-          Enabled: false
+          Enabled: true
           Invert Rainbow: false
           Max Color: 255; 255; 255
-          Max Intensity: 50.14332962036133
           Min Color: 0; 0; 0
-          Min Intensity: -0.04392780363559723
           Name: allMapCloud
           Position Transformer: XYZ
           Queue Size: 10
@@ -231,7 +233,7 @@ Visualization Manager:
           Unreliable: false
           Use Fixed Frame: true
           Use rainbow: false
-          Value: false
+          Value: true
         - Alpha: 1
           Autocompute Intensity Bounds: true
           Autocompute Value Bounds:
@@ -247,9 +249,7 @@ Visualization Manager:
           Enabled: false
           Invert Rainbow: false
           Max Color: 255; 255; 255
-          Max Intensity: 15
           Min Color: 0; 0; 0
-          Min Intensity: 0
           Name: surround
           Position Transformer: XYZ
           Queue Size: 1
@@ -274,12 +274,10 @@ Visualization Manager:
           Color: 255; 255; 255
           Color Transformer: Intensity
           Decay Time: 0
-          Enabled: false
+          Enabled: true
           Invert Rainbow: false
           Max Color: 255; 255; 255
-          Max Intensity: 50.141441345214844
           Min Color: 0; 0; 0
-          Min Intensity: -0.024373823776841164
           Name: currPoints
           Position Transformer: XYZ
           Queue Size: 10
@@ -291,7 +289,7 @@ Visualization Manager:
           Unreliable: false
           Use Fixed Frame: true
           Use rainbow: true
-          Value: false
+          Value: true
         - Angle Tolerance: 0.10000000149011612
           Class: rviz/Odometry
           Covariance:
@@ -313,6 +311,7 @@ Visualization Manager:
           Keep: 1
           Name: Odometry
           Position Tolerance: 0.10000000149011612
+          Queue Size: 10
           Shape:
             Alpha: 1
             Axes Length: 1.5
@@ -323,7 +322,7 @@ Visualization Manager:
             Shaft Length: 0.10000000149011612
             Shaft Radius: 20
             Value: Axes
-          Topic: /aft_mapped_to_init
+          Topic: aft_mapped_to_init
           Unreliable: false
           Value: false
         - Class: rviz/TF
@@ -331,6 +330,7 @@ Visualization Manager:
           Frame Timeout: 15
           Frames:
             All Enabled: true
+          Marker Alpha: 1
           Marker Scale: 1
           Name: TF
           Show Arrows: true
@@ -359,10 +359,11 @@ Visualization Manager:
         Z: 0
       Pose Color: 255; 85; 255
       Pose Style: Axes
+      Queue Size: 10
       Radius: 0.30000001192092896
       Shaft Diameter: 0.10000000149011612
       Shaft Length: 0.10000000149011612
-      Topic: /aft_pgo_path
+      Topic: aft_pgo_path
       Unreliable: false
       Value: true
     - Angle Tolerance: 0.10000000149011612
@@ -386,6 +387,7 @@ Visualization Manager:
       Keep: 1
       Name: pgoOdom
       Position Tolerance: 0.10000000149011612
+      Queue Size: 10
       Shape:
         Alpha: 1
         Axes Length: 5
@@ -396,7 +398,7 @@ Visualization Manager:
         Shaft Length: 1
         Shaft Radius: 0.05000000074505806
         Value: Axes
-      Topic: /aft_pgo_odom
+      Topic: aft_pgo_odom
       Unreliable: false
       Value: false
     - Alpha: 0.5
@@ -414,9 +416,7 @@ Visualization Manager:
       Enabled: true
       Invert Rainbow: false
       Max Color: 255; 255; 255
-      Max Intensity: 15.099973678588867
       Min Color: 0; 0; 0
-      Min Intensity: 0.00020467743161134422
       Name: pgoMap
       Position Transformer: XYZ
       Queue Size: 1
@@ -424,7 +424,7 @@ Visualization Manager:
       Size (Pixels): 3
       Size (m): 0.10000000149011612
       Style: Points
-      Topic: /aft_pgo_map
+      Topic: aft_pgo_map
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
@@ -444,9 +444,7 @@ Visualization Manager:
       Enabled: false
       Invert Rainbow: false
       Max Color: 255; 255; 255
-      Max Intensity: 20.06364631652832
       Min Color: 0; 0; 0
-      Min Intensity: 3.003571033477783
       Name: loop scan
       Position Transformer: XYZ
       Queue Size: 10
@@ -474,9 +472,7 @@ Visualization Manager:
       Enabled: false
       Invert Rainbow: false
       Max Color: 255; 255; 255
-      Max Intensity: 20.100271224975586
       Min Color: 0; 0; 0
-      Min Intensity: 3.0008726119995117
       Name: loop submap
       Position Transformer: XYZ
       Queue Size: 10
@@ -517,12 +513,13 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 10
+      Distance: 20.83867073059082
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
+      Field of View: 0.7853981852531433
       Focal Point:
         X: 0
         Y: 0
@@ -532,10 +529,9 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.7853981852531433
+      Pitch: 0.585398256778717
       Target Frame: aft_pgo
-      Value: Orbit (rviz)
-      Yaw: 0.7853981852531433
+      Yaw: 0.8153979778289795
     Saved: ~
 Window Geometry:
   Displays:
@@ -553,7 +549,7 @@ Window Geometry:
   Views:
     collapsed: false
   Width: 1920
-  X: 3840
-  Y: 0
+  X: 832
+  Y: 27
   pgo Views:
     collapsed: false
